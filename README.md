@@ -1,9 +1,9 @@
 # Java j2ee research
 ## Brief description
-Java j2ee skeleton projects that could be used as starter project for application development. There are some common features:
-* All projects are used Maven as build tool (if they could be applied).
+Java j2ee skeleton projects that could be used as starter project for application development. There are some notes:
+* All projects are used Maven as build tool (if it is applicable).
 * All projects are developed with Java SE 8.0 and/or Java JEE 7 (EJB 3.2). Source code is encoded as Unicode.
-* All projects are starter projects, more features could be added via patches in the 𝘶𝘱𝘨𝘳𝘢𝘥𝘦 folder. Please consult 𝘙𝘌𝘈𝘋𝘔𝘌.𝘵𝘹𝘵 file in this folder for detail guideline.
+* All projects are starter projects, more features could be added via patches in folder 𝘶𝘱𝘨𝘳𝘢𝘥𝘦. Please consult file 𝘙𝘌𝘈𝘋𝘔𝘌.𝘵𝘹𝘵 in this folder for detail guideline.
 ## Project folder structure
 * Project folder structure is obeyed Maven conventions.
 * Extension points:
