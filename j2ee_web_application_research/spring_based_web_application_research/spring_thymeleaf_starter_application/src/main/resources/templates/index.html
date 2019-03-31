@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Spring Thymeleaf starter applications
+        </title>
+    </head>
+
+    <body>
+        <h1>
+            Spring Thymeleaf starter applications
+        </h1>
+        <div>
+            <a href="/">Home page</a>
+        </div>
+        <div th:each="link : ${links}">
+            <a th:href="${link.path}" th:text="${link.name}" />
+        </div>
+    </body>
+</html>
+
+
