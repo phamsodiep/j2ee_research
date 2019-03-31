@@ -1,0 +1,13 @@
++++ ./CustomerApplication.java	2019-03-31 01:17:46.854387088 -0700
+@@ -4,8 +4,11 @@
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
++import org.phamsodiep.template.newnosql.repository.config.EnableNewNosqlRepositories;
++
+ 
+ @SpringBootApplication
++@EnableNewNosqlRepositories
+ public class CustomerApplication {
+   public static void main(String[] args) {
+     SpringApplication.run(CustomerApplication.class, args);

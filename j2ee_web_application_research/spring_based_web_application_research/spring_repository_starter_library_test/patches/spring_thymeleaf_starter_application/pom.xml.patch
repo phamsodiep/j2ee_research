@@ -1,0 +1,14 @@
++++ pom.xml	2019-03-30 23:53:11.087404644 -0700
+@@ -48,6 +48,12 @@
+             <version>${spring.boot.version}</version>
+             <scope>test</scope>
+         </dependency>
++
++        <dependency>
++            <groupId>org.phamsodiep.template</groupId>
++            <artifactId>newnosql-repository-skeleton</artifactId>
++            <version>0.0.1-SNAPSHOT</version>
++        </dependency>
+     </dependencies>
+ 
+     <build>

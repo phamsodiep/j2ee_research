@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>
+            Test spring_repository_starter_library
+        </title>
+    </head>
+
+    <body>
+        <h1>
+            Test spring_repository_starter_library
+        </h1>
+        <h3>Database content</h3>
+
+        <div th:each="item : *{tdocs}" th:remove="tag">
+            <div th:if="${item.string} != ${form.key}" style="display: flex; width: 100%;">
+                <div style="width: 100px;" th:text="${item.string}" />
+                <div style="width: 100px;" th:text="${item.integer}" />
+            </div>
+            <div th:if="${item.string} == ${form.key}" style="display: flex; width: 100%;">
+                <div style="width: 100px;">
+                  <b th:text="${item.string}" />
+                </div>
+                <div style="width: 100px;">
+                  <b th:text="${item.integer}" />
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+        <h3>Search form</h3>
+        <form
+         action="testnewnosql"
+         th:object="${form}"
+         method="post"
+        >
+            <div style="display: flex">
+                <div>
+                    Search:&nbsp;
+                </div>
+                <div>
+                    <input th:field="*{key}" />&nbsp;
+                </div>
+            </div>
+            <br />
+            <div th:if="*{testDocument}!=null">
+                Search result: Found
+            </div>
+            <div th:if="${form.key.length()}>0 and *{testDocument}==null">
+                Search result: Not found
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+
+
