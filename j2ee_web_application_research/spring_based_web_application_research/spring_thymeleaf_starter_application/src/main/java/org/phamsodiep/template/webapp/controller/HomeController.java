@@ -45,10 +45,13 @@ public class HomeController {
           for (Annotation at : foundClass.getAnnotations()) {
             if (at.annotationType() == Advertise.class) {
               Advertise advertise = (Advertise) at;
-              ViewLink link = new ViewLink();
-              link.setPath(advertise.path());
-              link.setName(advertise.name());
-              result.add(link);
+              String adPath = advertise.path();
+              if (adPath.indexOf('/') < 0) {
+                ViewLink link = new ViewLink();
+                link.setPath(adPath);
+                link.setName(advertise.name());
+                result.add(link);
+              }
               break;
             }
           }
