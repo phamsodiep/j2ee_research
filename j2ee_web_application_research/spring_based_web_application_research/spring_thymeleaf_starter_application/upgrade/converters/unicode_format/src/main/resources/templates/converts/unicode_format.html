@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Unicode format converter
+        </title>
+        <script>
+            function testCommit(txtarea) {
+              if (event.ctrlKey && (event.keyCode == 10 || event.keyCode == 13)) {
+                var form = document.getElementById("unicode_convert_form");
+                if (form && (typeof form.submit === "function")) {
+                  //alert(txtarea.selectionEnd);
+                  form['cursorPosition'].value = txtarea.selectionEnd;
+                  form.submit();
+                }
+              }
+            }
+            function setCursor(txtarea) {
+              var form = document.getElementById("unicode_convert_form");
+              if (form && (typeof form['cursorPosition'].value === "string")) {
+                var curpos = Number(form['cursorPosition'].value);
+                txtarea.selectionStart = curpos;
+                txtarea.selectionEnd = curpos;
+              }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>
+            Unicode format converter
+        </h1>
+        <form
+         id="unicode_convert_form"
+         action="/converts/unicode_format"
+         th:object="${formModel}"
+         method="post"
+        >
+            <b>
+                Format:
+            </b>
+            <div th:each="item : *{formats}">
+                <input
+                  type="radio"
+                  th:field="*{format}"
+                  th:value="${item.value}"
+                  th:text="${item.key}"
+                />
+            </div>
+            <br /><br />
+            <div style="width: 100%; display: flex;"> 
+                <div style="width: 100%;">
+                    <b>
+                      Input: <br /><br />
+                    </b>
+                    <textarea
+                      rows="25"
+                      cols="64"
+                      autofocus="true"
+                      onkeypress="testCommit(this);"
+                      onfocus="setCursor(this);"
+                      th:field="*{input}"
+                    >
+                        ...
+                    </textarea>
+                    <br /><br />
+                    <div>
+                        Click 'Convert' button or press Ctrl + Enter while
+                        editing to execute convert command.
+                    </div>
+                    <br />
+                    <button
+                    type="submit"
+                    >
+                        Convert
+                    </button>
+                    <br /><br /><br /><br />
+                </div>
+                <div style="width:100%;">
+                    <b>
+                        Output: <br /><br />
+                    </b>
+                    <textarea
+                      rows="25"
+                      cols="64"
+                      readonly=true
+                      th:field="*{output}"
+                    >
+                        ...
+                    </textarea>
+                    <br /><br />
+                    <div th:if="${formModel.format} == '*'">
+                        Example: "[b]This[/b] is a [i]banana[/i]." &#x21e8;
+                        "𝗧𝗵𝗶𝘀 is a 𝘣𝘢𝘯𝘢𝘯𝘢."
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" th:field="*{cursorPosition}"/>
+        </form>
+    </body>
+</html>
+
+

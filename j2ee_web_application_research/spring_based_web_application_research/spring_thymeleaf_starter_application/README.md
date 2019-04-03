@@ -21,3 +21,10 @@ A skeleton project to build Spring Boot application that initially applies Sprin
     * ./upgrade/import_scripts/import_google_app_engine_build.sh 00
   * Launch below 𝘮𝘢𝘷𝘦𝘯 build command to build:
     * mvn -f gae-pom-00.xml appengine:deploy
+### converters
+This group contains patches about converter utilities:
+* 𝘤𝘰𝘮𝘮𝘰𝘯: this folder contains patches that is shared for all other utilities in this group.
+#### unicode_format
+* This patch adds utility does format plain text by applying unicode code point shifting. The utility encodes input text into another unicode code point range that results in texts are rendered bold or italic by pure text editor like Pluma, Notepad++...
+* Launch below command to patch:
+  * ./upgrade/import_scripts/import_unicode_format_prj.sh
