@@ -11,12 +11,11 @@ cd spring_thymeleaf_starter_application
 patch < ../patches/spring_thymeleaf_starter_application/pom.xml.patch
 
 echo " "
-echo "Add '@EnableNewNosqlRepositories' to CustomerApplication.java of project 'spring_thymeleaf_starter_application'"
-patch -d src/main/java/org/phamsodiep/template/webapp < ../patches/spring_thymeleaf_starter_application/CustomerApplication.java.patch
+echo "Add '@EnableNewNosqlRepositories' to Application.java of project 'spring_thymeleaf_starter_application'"
+patch -d src/main/java/org/phamsodiep/template/webapp < ../patches/spring_thymeleaf_starter_application/Application.java.patch
 
 echo " "
 echo "Add test source files to project 'spring_thymeleaf_starter_application'"
-#tar -xpzf ../patches/spring_thymeleaf_starter_application/src.tgz
 cp -r ../patches/spring_thymeleaf_starter_application/src .
 
 echo " "
