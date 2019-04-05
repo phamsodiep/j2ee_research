@@ -18,6 +18,6 @@ Two starter projects demonstrate how to build a simple EJB 3.2 stateless bean. T
 Containing project group related to servlets based lightweight j2ee projects (project that could be run on servlets container like Tomcat, Jetty...)
 #### spring_based_web_application_research
 This project group contains sub-groups or projects that apply Spring frameworks.
+* 𝘴𝘱𝘳𝘪𝘯𝘨_𝘳𝘦𝘴𝘵_𝘴𝘦𝘳𝘷𝘪𝘤𝘦_𝘴𝘵𝘢𝘳𝘵𝘦𝘳_𝘢𝘱𝘱𝘭𝘪𝘤𝘢𝘵𝘪𝘰𝘯: most simple Spring application project that provides RESTful Web Services accessing Version resource. It could be used as a skeleton project to develop more.
 * 𝘴𝘱𝘳𝘪𝘯𝘨_𝘵𝘩𝘺𝘮𝘦𝘭𝘦𝘢𝘧_𝘴𝘵𝘢𝘳𝘵𝘦𝘳_𝘢𝘱𝘱𝘭𝘪𝘤𝘢𝘵𝘪𝘰𝘯: most simple Spring application project that applies Thymeleaf library. It could be used as a skeleton project to develop more.
 * 𝘴𝘱𝘳𝘪𝘯𝘨_𝘳𝘦𝘱𝘰𝘴𝘪𝘵𝘰𝘳𝘺_𝘴𝘵𝘢𝘳𝘵𝘦𝘳_𝘭𝘪𝘣𝘳𝘢𝘳𝘺: most simple Spring repository project that demonstrates how @𝘌𝘯𝘢𝘣𝘭𝘦𝘑𝘱𝘢𝘙𝘦𝘱𝘰𝘴𝘪𝘵𝘰𝘳𝘪𝘦𝘴 or @𝘌𝘯𝘢𝘣𝘭𝘦𝘔𝘰𝘯𝘨𝘰𝘙𝘦𝘱𝘰𝘴𝘪𝘵𝘰𝘳𝘪𝘦𝘴 works. It could be used as a skeleton project to develop more (e.g. developing @𝘌𝘯𝘢𝘣𝘭𝘦𝘍𝘪𝘳𝘦𝘣𝘢𝘴𝘦𝘙𝘦𝘱𝘰𝘴𝘪𝘵𝘰𝘳𝘪𝘦𝘴 for Google Firebase NoSql library).
-
