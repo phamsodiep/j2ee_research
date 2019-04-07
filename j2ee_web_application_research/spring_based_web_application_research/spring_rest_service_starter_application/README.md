@@ -22,7 +22,7 @@ A skeleton project to build RESTful Web Services. It implements a RESTful Web Se
 Demonstration for a simple RESTfull server supporting HTTP post request.
 #### Description
 This patch implements a RESTful Web Service for Source Code Browser resource. It processes a source code browse request as an HTTP post request. The request information includes: file name (current edited file), file position (current cursor position).
-The idea is that Emacs IDE will send an HTTP post request to this RESTfull server. The server will process request, determine the definition location and send back this location to Emacs via Emacsclient library.
+The idea is that Emacs IDE will send an HTTP post request to this RESTfull server. The server will process request, determine the definition location and send back this location to Emacs via Emacsclient protocol.
 For simple demonstration, this patch implementation just accepts a request and do System.out.println.
 #### Pre-build
 This does import source code. Launch below command for importing:
@@ -31,7 +31,7 @@ This does import source code. Launch below command for importing:
 * Launch 𝘮𝘢𝘷𝘦𝘯 command:
   * mvn clean package
 #### Test
-* Start RESTfull server first. Assuming that target version is 0.0.1-SNAPSHOT, launch below command to start server:
+* Start RESTfull server first. Assuming that the cloned version is 0.0.1-𝘚𝘕𝘈𝘗𝘚𝘏𝘖𝘛, launch below command to start server:
     * java -jar target/rest-service-skeleton-0.0.1-SNAPSHOT.jar
 * Test with Emacs. Do below steps manually to add browse source code function to Emacs
   * Backup your 𝘪𝘯𝘪𝘵.𝘦𝘭 file first (it may be located in ~/.𝘦𝘮𝘢𝘤𝘴.𝘥)
@@ -42,14 +42,18 @@ This does import source code. Launch below command for importing:
       * File: untitled.java
       * Position: 2048
 * Test with python script
-    * Run file 𝘣𝘳𝘰𝘸𝘴𝘦_𝘴𝘰𝘶𝘳𝘤𝘦_𝘤𝘰𝘥𝘦.𝘱𝘺 as below example:
-      * ./browse_source_code.py /home/phamsodiep/emacs/hi-cloud-project/Main.java 23
+  * Run file 𝘣𝘳𝘰𝘸𝘴𝘦_𝘴𝘰𝘶𝘳𝘤𝘦_𝘤𝘰𝘥𝘦.𝘱𝘺 as below example:
+    * ./browse_source_code.py /home/phamsodiep/emacs/hi-cloud-project/Main.java 23
+  * Browse source request will be traced on Server console log similarly to below one:
+    * Emacs requests update browser target to:
+      * File: /home/phamsodiep/emacs/hi-cloud-project/Main.java
+      * Position: 23
 #### Version 01
 #### Brief description
 Demonstration for accessing application scope variable (ServletContext).
 #### Description
 This patch extends version 00 patch. It processes a configuration setting request. The setting request information includes: host, port and authorization key.
-The idea is that Emacs IDE will send configuration setting request to this RESTfull server only one time while it is being opened. The server will persist this information for future communication back to Emacs via Emacsclient library.
+The idea is that Emacs IDE will send configuration setting request to this RESTfull server only one time while it is being opened. The server will persist this information for future communication back to Emacs via Emacsclient protocol.
 #### Pre-build
 This does import source code. Launch below command for importing:
 * ./upgrade/import_scripts/import_source_code_browser_with_config.sh
@@ -57,7 +61,7 @@ This does import source code. Launch below command for importing:
 * Launch 𝘮𝘢𝘷𝘦𝘯 command:
   * mvn clean package
 #### Test
-* Start RESTfull server first. Assuming that target version is 0.0.1-SNAPSHOT, launch below command to start server:
+* Start RESTfull server first. Assuming that the cloned version is 0.0.1-𝘚𝘕𝘈𝘗𝘚𝘏𝘖𝘛, launch below command to start server:
     * java -jar target/rest-service-skeleton-0.0.1-SNAPSHOT.jar
 * Test with python script
     * Run file 𝘤𝘰𝘯𝘧𝘪𝘨_𝘴𝘰𝘶𝘳𝘤𝘦_𝘤𝘰𝘥𝘦_𝘣𝘳𝘰𝘸𝘴𝘦𝘳.𝘱𝘺 as below example:
@@ -90,4 +94,28 @@ This does import source code. Launch below command for importing:
 * There are some notes:
   * The 𝘗𝘳𝘦𝘷𝘪𝘰𝘶𝘴 𝘤𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘢𝘵𝘪𝘰𝘯 information is the setting request information sent by script 𝘤𝘰𝘯𝘧𝘪𝘨_𝘴𝘰𝘶𝘳𝘤𝘦_𝘤𝘰𝘥𝘦_𝘣𝘳𝘰𝘸𝘴𝘦𝘳.𝘱𝘺.
   * The 𝘌𝘮𝘢𝘤𝘴 𝘳𝘦𝘲𝘶𝘦𝘴𝘵𝘴 𝘤𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘢𝘵𝘪𝘰𝘯 𝘶𝘱𝘥𝘢𝘵𝘦 information is the setting request information sent by Emacs. Your one may be different with the this demonstration guideline.
-
+  * Python script client and Emacs client are two separates clients with two difference sessions (HTTP Session), but the variable is visible to each other because of the variable scope is application scope.
+#### Version 02
+#### Brief description
+Demonstration for opening a client socket and sending while process RESTfull service.
+#### Description
+This patch extends version 00 patch (and it also includes version 01 patch for configuration setting as its use case precondition). After process of patch 00, it sends a request to Emacs via Emacsclient protocol (its client socket sends message to Emacs's server socket) to open a file in Emacs at request position (line, column).
+#### Pre-build
+This does import source code. Launch below command for importing:
+* ./upgrade/import_scripts/import_source_code_browser_with_response.sh
+#### Build
+* Launch 𝘮𝘢𝘷𝘦𝘯 command:
+  * mvn clean package
+#### Test
+* Start RESTfull server first. Assuming that the cloned version is 0.0.1-𝘚𝘕𝘈𝘗𝘚𝘏𝘖𝘛, launch below command to start server:
+    * java -jar target/rest-service-skeleton-0.0.1-SNAPSHOT.jar
+* Do below steps manually to add browse source code function to Emacs
+  * Backup your 𝘪𝘯𝘪𝘵.𝘦𝘭 file first (it may be located in ~/.𝘦𝘮𝘢𝘤𝘴.𝘥)
+  * Overwrite 𝘪𝘯𝘪𝘵.𝘦𝘭 file located in 𝘶𝘱𝘨𝘳𝘢𝘥𝘦/𝘴𝘰𝘶𝘳𝘤𝘦_𝘤𝘰𝘥𝘦_𝘣𝘳𝘰𝘸𝘴𝘦𝘳_𝘤𝘰𝘯𝘵𝘳𝘰𝘭𝘭𝘦𝘳/01 to ~/.𝘦𝘮𝘢𝘤𝘴.𝘥/𝘪𝘯𝘪𝘵.𝘦𝘭
+  * Open a file with Emacs, put cursor at a method and press M-. to browse source code.
+  * Browse source request will be traced on Server console log similarly to below one:
+    * Emacs requests update browser target to:
+      * File: untitled.java
+      * Position: 2048
+    * Send request to client: successfully
+  * File /𝘦𝘵𝘤/𝘩𝘰𝘴𝘵𝘴 should be opened at line 2 column 4. (as it is hardcoded in SourceCodeBrowserController.java)
