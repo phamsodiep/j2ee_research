@@ -20,7 +20,9 @@ public class SourceCodeBrowserController {
     @RequestBody
     Target target
   ) {
-    System.out.println("Emacs request update browser target to " + target);
+    System.out.println("Emacs requests update browser target to:");
+    System.out.println("\tFile: " + target.getFile());
+    System.out.println("\tPosition: " + target.getPosition());
     return new ResponseEntity<String>(HttpStatus.OK);
   }
 
@@ -43,10 +45,6 @@ public class SourceCodeBrowserController {
 
     Integer getPosition() {
       return this.position;
-    }
-
-    public String toString() {
-      return this.file + "@" + this.position;
     }
   }
 }
