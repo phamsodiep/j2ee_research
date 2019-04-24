@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Inspector utilities
+    </title>
+  </head>
+
+  <body>
+    <h1>
+      Inspector utilities
+    </h1>
+  <div th:each="link : ${links}">
+    <a th:href="${link.path}" th:text="${link.name}" />
+  </div>
+  </body>
+</html>
+
+

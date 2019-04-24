@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Class Hierarchy Inspector
+        </title>
+        <script>
+            function displaySelectedFileName(targetElementId, value) {
+              let path = value.split("\\");
+              let fileName = path[path.length-1];
+              document.getElementById(targetElementId).innerHTML = [
+                "<i>",
+                  fileName,
+                "</i>",
+              ].join("");
+            }
+        </script>
+        <style>
+            div.formLine {
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>
+            Class Hierarchy Inspector
+        </h1>
+        <form
+          action="/inspectors/class_hierarchy"
+          th:object="${formModel}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+            <input
+              id="fileInput"
+              style="visibility:hidden;"
+              type="file"
+              th:field="*{jarLibfile}"
+              onchange="displaySelectedFileName('selectedFile', this.value);"
+            />
+            <div class="formLine">
+                <span>Upload library file name: </span>
+                <span id="selectedFile">&nbsp;</span>
+                <span>
+                    <button type="button">
+                        <label for="fileInput">Select jar library</label>
+                    </button>
+                </span>
+            </div>
+            <div class="formLine">
+                <span>Package name:</span>
+                <input
+                  type="text"
+                  th:field="*{packageName}"
+                />
+            </div>
+            <div class="formLine">
+                Enter class names to be analyst:
+                <ul>
+                    <li>
+                        Just enter simple name, not full name.
+                    </li>
+                    <li>
+                        Each line repsents a class name (class names are
+                        seperated by '\n' token)
+                    </li>
+                </ul>
+            </div>
+            <div class="formLine">
+                <textarea
+                  rows="25"
+                  cols="64"
+                  autofocus="true"
+                  th:field="*{classNameList}"
+                >
+                    ...
+                </textarea>
+            </div>
+            <div class="formLine">
+                <button
+                  name="name"
+                  value="Submit"
+                  type="submit"
+                >
+                    Upload library and process
+                </button>
+            </div>
+        </form>
+    </body>
+</html>
+
+
