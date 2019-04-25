@@ -30,7 +30,6 @@
         </h1>
         <form
           action="/inspectors/class_hierarchy"
-          th:object="${formModel}"
           method="post"
           enctype="multipart/form-data"
         >
@@ -38,7 +37,7 @@
               id="fileInput"
               style="visibility:hidden;"
               type="file"
-              th:field="*{jarLibfile}"
+              name="jarLibfile"
               onchange="displaySelectedFileName('selectedFile', this.value);"
             />
             <div class="formLine">
@@ -54,7 +53,8 @@
                 <span>Package name:</span>
                 <input
                   type="text"
-                  th:field="*{packageName}"
+                  name="packageName"
+                  style="width: 420px;"
                 />
             </div>
             <div class="formLine">
@@ -74,10 +74,8 @@
                   rows="25"
                   cols="64"
                   autofocus="true"
-                  th:field="*{classNameList}"
-                >
-                    ...
-                </textarea>
+                  name="classNameList"
+                ></textarea>
             </div>
             <div class="formLine">
                 <button
